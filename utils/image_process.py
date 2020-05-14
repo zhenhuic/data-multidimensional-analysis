@@ -1,3 +1,5 @@
+import io
+
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -93,6 +95,22 @@ def images_prep_factory(label_images_dict: dict, projects_view_name_dict: dict):
             prep_images_dict[name] = None
 
     return prep_images_dict
+
+
+def fig2img(fig, dpi=180):
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=dpi)
+    buf.seek(0)
+    img_arr = np.frombuffer(buf.getvalue(), dtype=np.uint8)
+    buf.close()
+    img = cv2.imdecode(img_arr, 1)
+    return img
+
+
+def resize(img_path: str, dsize: tuple):
+    img = cv2.imread(img_path)
+    img = cv2.resize(img, dsize)
+    return img
 
 
 if __name__ == '__main__':
