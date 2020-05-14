@@ -155,7 +155,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>OP30线厚度检测传感器</string>
               </property>
              </widget>
             </item>
@@ -173,7 +173,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>OP40线定位台传感器</string>
               </property>
              </widget>
             </item>
@@ -191,7 +191,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>OP30报警-今日频次</string>
               </property>
              </widget>
             </item>
@@ -209,7 +209,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>OP30报警-一周波形</string>
               </property>
              </widget>
             </item>
@@ -227,7 +227,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>萨瓦尼尼线异常事件情况</string>
               </property>
              </widget>
             </item>
@@ -254,7 +254,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>薄板通用线异常事件情况</string>
               </property>
              </widget>
             </item>
@@ -272,7 +272,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>侧板焊接线OEE能效统计</string>
               </property>
              </widget>
             </item>
@@ -290,7 +290,7 @@ font: 14pt &quot;宋体&quot;;
 color: rgb(85, 255, 255);</string>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>厚板线OEE能效统计</string>
               </property>
              </widget>
             </item>

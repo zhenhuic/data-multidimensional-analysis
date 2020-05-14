@@ -1,6 +1,6 @@
 import datetime
 import warnings
-from datetime import datetime
+import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -74,7 +74,7 @@ class Demo:
         fig.ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
         # plt.show()
-        return fig2img(fig)
+        return fig2img(fig.fig)
 
     def drawSingleFrequencyAndTime(self, singleFrequencyAndTime, name):
         """
@@ -119,7 +119,7 @@ class Demo:
 
         # plt.show()
         # plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
-        return fig2img(fig)
+        return fig2img(fig.fig)
 
     def drawMultipleFrequencyOfToday(self, name):
         """
@@ -146,7 +146,7 @@ class Demo:
 
         # plt.show()
         # plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
-        return fig2img(fig)
+        return fig2img(fig.fig)
 
     def drawMultipleFrequencyOfWeek(self, name):
         """
@@ -174,7 +174,7 @@ class Demo:
         fig.ax1.set_title(str(name) + "报警——近7天波形")
         # plt.show()
         # plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
-        return fig2img(fig)
+        return fig2img(fig.fig)
 
 
 if __name__ == '__main__':

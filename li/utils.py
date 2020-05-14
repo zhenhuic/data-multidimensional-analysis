@@ -76,7 +76,7 @@ class Utils:
     def selectMultipleFrequencyOfToday(self, name):
         conn, cursor = ConnectAndClose().database_connect()
         menu = Menu()
-        filePath = "../menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
+        filePath = "menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
         # filePath = "menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
         searchList = menu.readerTitle(filePath)
         name = ""
@@ -95,7 +95,7 @@ class Utils:
     def selectMultipleFrequencyOfWeek(self, name):
         conn, cursor = ConnectAndClose().database_connect()
         menu = Menu()
-        filePath = "../menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
+        filePath = "menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
         # filePath = "menuFile/" + str(name) + ".txt"  # ../menuFile/OP30.txt
         searchList = menu.readerTitle(filePath)
         name = ""

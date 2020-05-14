@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'E:\Lab417\data-multidimensional-analysis\multidim_gui\multidim_analysis.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -225,14 +225,14 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "基于人工智能的生产流程分析与可视化系统"))
         self.titleLabel.setText(_translate("MainWindow", "生产流程的多维分析与可视化"))
-        self.pushButton_1.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_2.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_3.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_4.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_5.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
-        self.pushButton_8.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton_1.setText(_translate("MainWindow", "OP30线厚度检测传感器"))
+        self.pushButton_2.setText(_translate("MainWindow", "OP40线定位台传感器"))
+        self.pushButton_3.setText(_translate("MainWindow", "OP30报警-今日频次"))
+        self.pushButton_4.setText(_translate("MainWindow", "OP30报警-一周波形"))
+        self.pushButton_5.setText(_translate("MainWindow", "萨瓦尼尼线异常事件情况"))
+        self.pushButton_6.setText(_translate("MainWindow", "薄板通用线异常事件情况"))
+        self.pushButton_7.setText(_translate("MainWindow", "侧板焊接线OEE能效统计"))
+        self.pushButton_8.setText(_translate("MainWindow", "厚板线OEE能效统计"))
         self.processMenu.setTitle(_translate("MainWindow", "程序"))
         self.systemMenu.setTitle(_translate("MainWindow", "系统"))
         self.setupMenu.setTitle(_translate("MainWindow", "设置"))

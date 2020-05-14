@@ -10,6 +10,7 @@ from multidim_gui.multidim_analysis import Ui_MainWindow
 from utils.image_process import array_to_QImage
 from li.draw_graph import Demo
 from chen.draw_graph import draw_records
+from wang.figure_plot import Figure_OEE
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -36,7 +37,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.graphLabel, self.li_project.drawPie("OP30厚度检测气缸伸出未到位")))
 
         self.pushButton_2.clicked.connect(lambda: self.set_label_pixmap(
-            self.graphLabel, self.li_project.drawBarAndLine("OP30厚度检测气缸伸出未到位")))
+            self.graphLabel, self.li_project.drawBarAndLine("OP40定位台宽度检测气缸缩回到位")))
 
         self.pushButton_3.clicked.connect(lambda: self.set_label_pixmap(
             self.graphLabel, self.li_project.drawMultipleToday("OP30")))
@@ -48,7 +49,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.graphLabel, draw_records("sawanini_1")))
 
         self.pushButton_6.clicked.connect(lambda: self.set_label_pixmap(
-            self.graphLabel, draw_records("sawanini_2")))
+            self.graphLabel, draw_records("baobantongyong")))
+        oee = Figure_OEE()
+        self.pushButton_7.clicked.connect(lambda: self.set_label_pixmap(
+            self.graphLabel, oee.plot(*(33, 28, 37, 94))))
 
     def resizeEvent(self, event: QtGui.QResizeEvent) -> None:
         pass  # size设为None表示图片大小自适应
