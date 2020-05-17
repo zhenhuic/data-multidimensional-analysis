@@ -28,8 +28,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeWidget.itemClicked['QTreeWidgetItem*', 'int'].connect(
             lambda item, col: self.set_label_pixmap(self.get_project_chart(item.text(col))))
 
+        self.li_project = Demo()
 
-        # self.li_project = Demo()
         # self.pushButton_1.clicked.connect(lambda: self.set_label_pixmap(
         #     self.graphLabel, self.li_project.drawPie("OP30厚度检测气缸伸出未到位")))
         #
@@ -53,6 +53,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def get_project_chart(self, item_name: str) -> np.ndarray:
         print('"' + item_name + '"')
+        # chen
         if item_name == "老萨瓦尼尼线":
             return draw_records("sawanini_1")
         elif item_name == "新萨瓦尼尼线":
@@ -64,6 +65,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif item_name == "薄板通用线":
             return draw_records("baobantongyong")
 
+        # li
+        elif item_name == "OP20今日报警频次":
+            return self.li_project.drawMultipleToday("OP20")
+        elif item_name == "OP20一周报警情况":
+            return self.li_project.drawMultipleWeek("OP20")
+        elif item_name == "OP20侧气压低":
+            return self.li_project.drawPie("OP20侧气压低")
+        elif item_name == "OP20冲床报警":
+            return self.li_project.drawBarAndLine("OP20冲床报警")
+
+        elif item_name == "OP30今日报警频次":
+            return self.li_project.drawMultipleToday("OP30")
+        elif item_name == "OP30一周报警情况":
+            return self.li_project.drawMultipleWeek("OP30")
+        elif item_name == "OP30机器人急停":
+            return self.li_project.drawPie("OP30机器人急停")
+        elif item_name == "OP30码垛产品不一致":
+            return self.li_project.drawBarAndLine("OP30码垛产品不一致")
+
+        elif item_name == "OP40今日报警频次":
+            return self.li_project.drawMultipleToday("OP40")
+        elif item_name == "OP40一周报警情况":
+            return self.li_project.drawMultipleWeek("OP40")
+        elif item_name == "OP40安全门未锁":
+            return self.li_project.drawPie("OP40安全门未锁")
+        elif item_name == "OP40宽度检测气缸缩回未到位":
+            return self.li_project.drawBarAndLine("OP40宽度检测气缸缩回未到位")
 
         else:
             print("未设置该项目")

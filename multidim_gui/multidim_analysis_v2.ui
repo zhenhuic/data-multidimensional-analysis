@@ -287,12 +287,22 @@ color: rgb(85, 255, 255);
               </property>
               <item>
                <property name="text">
-                <string>OP20</string>
+                <string>OP20今日报警频次</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>OP20真空检测超时报警</string>
+                <string>OP20一周报警情况</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP20侧气压低</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP20冲床报警</string>
                </property>
               </item>
              </item>
@@ -302,12 +312,22 @@ color: rgb(85, 255, 255);
               </property>
               <item>
                <property name="text">
-                <string>OP30</string>
+                <string>OP30今日报警频次</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>OP30厚度检测气缸伸出未到位</string>
+                <string>OP30一周报警情况</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP30机器人急停</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP30码垛产品不一致</string>
                </property>
               </item>
              </item>
@@ -317,12 +337,22 @@ color: rgb(85, 255, 255);
               </property>
               <item>
                <property name="text">
-                <string>OP40</string>
+                <string>OP40今日报警频次</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>OP40定位台宽度检测气缸缩回到位</string>
+                <string>OP40一周报警情况</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP40安全门未锁</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>OP40宽度检测气缸缩回未到位</string>
                </property>
               </item>
              </item>
