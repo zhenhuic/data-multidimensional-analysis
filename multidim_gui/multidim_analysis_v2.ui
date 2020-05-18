@@ -187,22 +187,17 @@ color: rgb(85, 255, 255);
               </property>
               <item>
                <property name="text">
-                <string>新建子项目</string>
+                <string>侧板设备工作损失占比</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>新建项目</string>
+                <string>侧板OEE能效日推图</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>新建项目</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>新建项目</string>
+                <string>侧板设备工作损失时间统计</string>
                </property>
               </item>
              </item>

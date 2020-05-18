@@ -12,6 +12,7 @@ from multidim_gui.multidim_analysis_v2 import Ui_MainWindow
 from utils.image_process import array_to_QImage, fig2img
 from li.draw_graph import Demo
 from chen.draw_graph import draw_records
+from wang.draw import Draw
 from wang.figure_plot import Figure_OEE
 from yv.opc_plot import FigureLineChart
 
@@ -32,6 +33,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.li_project = Demo()
         self.yv_project = FigureLineChart()
+        self.wang_project = Draw()
 
         # self.pushButton_1.clicked.connect(lambda: self.set_label_pixmap(
         #     self.graphLabel, self.li_project.drawPie("OP30厚度检测气缸伸出未到位")))
@@ -128,8 +130,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return cv2.imread("1.png")
 
         # wang
-        elif item_name == "":
-            return
+        elif item_name == "侧板设备工作损失占比":
+            return self.wang_project.draw_fp()
+        elif item_name == "侧板OEE能效日推图":
+            return self.wang_project.draw_oee()
+        elif item_name == "侧板设备工作损失时间统计":
+            return self.wang_project.draw_loss()
 
         # yue
 

@@ -2,17 +2,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 
-from utils.image_process import fig2img
-
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 
 
-class Figure_Origin:
-    """这个类是绘图父类
-    """
+class Figure_Origin():
+    '''这个类是绘图父类
+    '''
 
     def __init__(self):
-        self.figure = plt.figure(figsize=(6.2, 4), facecolor='lightgoldenrodyellow')  # 等下继承一个父类
+        self.figure = plt.figure(figsize=(4.9, 3.2), facecolor='lightgoldenrodyellow')  # 等下继承一个父类
         self.canvas = FigureCanvas(self.figure)
 
     def plot(self, *args, **kwargs):
@@ -20,8 +18,8 @@ class Figure_Origin:
 
 
 class Figure_MT(Figure_Origin):
-    """这个类是绘制耗材图
-    """
+    '''这个类是绘制耗材图
+    '''
 
     def __init__(self, parent=None, width=3.2, height=2.8, dpi=100):
         super(Figure_MT, self).__init__()
@@ -62,7 +60,6 @@ class Figure_MT(Figure_Origin):
             plt.close()  # 关闭，否则会出现warning
 
         plot_mt()
-        return fig2img(self.figure)
 
 
 class Figure_OEE(Figure_Origin):
@@ -110,12 +107,11 @@ class Figure_OEE(Figure_Origin):
             plt.close()
 
         plot_oee()
-        return fig2img(self.figure)
 
 
 class Figure_Loss(Figure_Origin):
-    """这个类是绘制损失统计图
-    """
+    '''这个类是绘制损失统计图
+    '''
 
     def __init__(self, parent=None, width=3.5, height=2.8, dpi=100):
         super(Figure_Loss, self).__init__()
@@ -126,7 +122,7 @@ class Figure_Loss(Figure_Origin):
             rect = ax.patch
             rect.set_facecolor('lightblue')
 
-            x_label = ('拆机', '调试', '静止', '工作')
+            x_label = ('装载侧板', '清理焊嘴', '静止', '工作')
             x_pos = np.arange(len(x_label))
             performance = list(args)
             ax.bar(x_pos, performance, width=0.30, align='center', alpha=0.4, color=['red', 'green', 'blue', 'gray'])
@@ -139,18 +135,17 @@ class Figure_Loss(Figure_Origin):
             ax.set_yticks([0, 400, 800, 1200, 1600])
             ax.set_ylabel('时间：分钟', fontsize=10)
             ax.set_title("设备工作损失时间统计", fontsize=20)  # 30
-            ax.set_xticklabels((u'拆机', u'调试', u'静止', u'工作'), fontsize=15)
+            ax.set_xticklabels((u'装载侧板', u'清理焊嘴', u'静止', u'工作'), fontsize=15)
             ax.yaxis.grid(True)
             self.canvas.draw()
             plt.close()
 
-        plot_loss()
-        return fig2img(self.figure)
+        return plot_loss()
 
 
 class Figure_Pie(Figure_Origin):
-    """这个类是绘制饼图
-    """
+    '''这个类是绘制饼图
+    '''
 
     def __init__(self, parent=None, width=3.5, height=2.8, dpi=100):
         super(Figure_Pie, self).__init__()
@@ -159,7 +154,7 @@ class Figure_Pie(Figure_Origin):
         def plot_pie():
             ax = self.figure.add_subplot(111)
             ax.set_title("设备工作损失时间占比", fontsize=20)
-            labels = '拆机', '调试', '静止', '工作'
+            labels = '装载侧板', '清理焊嘴', '静止', '工作'
             sizes = args
             explode = (0, 0.1, 0, 0)  # 第一个异常在饼图冲凸显，凸显度为0.1
             ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True,
@@ -169,17 +164,8 @@ class Figure_Pie(Figure_Origin):
             plt.close()
 
         plot_pie()
-        return fig2img(self.figure)
-
-
-def draw_fp():  # 绘制损失饼图
-    fp = Figure_Pie()
-    # da = data_access.EquipmentData()
-    # result = da.select()
-    # fp.plot(*(result[-1][1], result[-1][2], result[-1][3], result[-1][4]))  # '*'有一个解包的功能，将（1，1，1，1）解包为 1 1 1 1
-    fp.plot(*(33, 28, 37, 94))
 
 
 if __name__ == "__main__":
     fo = Figure_OEE()
-    fo.plot(*(33, 28, 37, 94))
+    fo.plot((1, 1, 1, 1))
