@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\Lab417\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
+# Form implementation generated from reading ui file 'E:\projects-summary\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1280, 695))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1280, 681))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout.setContentsMargins(0, 9, 0, 9)
@@ -96,7 +96,16 @@ class Ui_MainWindow(object):
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
+        item_2 = QtWidgets.QTreeWidgetItem(item_1)
         item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         item_2 = QtWidgets.QTreeWidgetItem(item_1)
@@ -132,7 +141,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 30))
         self.menuBar.setStyleSheet("background-color: rgb(35, 35, 35);\n"
 "selection-background-color: rgb(100, 100, 100);\n"
 "color: rgb(255, 255, 255);")
@@ -207,8 +216,17 @@ class Ui_MainWindow(object):
         self.treeWidget.topLevelItem(1).child(3).setText(0, _translate("MainWindow", "老萨瓦尼尼线"))
         self.treeWidget.topLevelItem(1).child(4).setText(0, _translate("MainWindow", "薄板通用线"))
         self.treeWidget.topLevelItem(2).setText(0, _translate("MainWindow", "多生产线的数据分析与可视化"))
-        self.treeWidget.topLevelItem(2).child(0).setText(0, _translate("MainWindow", "新建子项目"))
-        self.treeWidget.topLevelItem(2).child(1).setText(0, _translate("MainWindow", "新建项目"))
+        self.treeWidget.topLevelItem(2).child(0).setText(0, _translate("MainWindow", "侧板焊接线"))
+        self.treeWidget.topLevelItem(2).child(0).child(0).setText(0, _translate("MainWindow", "焊接启动"))
+        self.treeWidget.topLevelItem(2).child(0).child(1).setText(0, _translate("MainWindow", "送丝"))
+        self.treeWidget.topLevelItem(2).child(0).child(2).setText(0, _translate("MainWindow", "油泵开"))
+        self.treeWidget.topLevelItem(2).child(1).setText(0, _translate("MainWindow", "新萨瓦尼尼线"))
+        self.treeWidget.topLevelItem(2).child(1).child(0).setText(0, _translate("MainWindow", "门板前左角度"))
+        self.treeWidget.topLevelItem(2).child(1).child(1).setText(0, _translate("MainWindow", "门板中部左角度"))
+        self.treeWidget.topLevelItem(2).child(1).child(2).setText(0, _translate("MainWindow", "门板后左角度"))
+        self.treeWidget.topLevelItem(2).child(1).child(3).setText(0, _translate("MainWindow", "门板前右角度"))
+        self.treeWidget.topLevelItem(2).child(1).child(4).setText(0, _translate("MainWindow", "门板中部右角度"))
+        self.treeWidget.topLevelItem(2).child(1).child(5).setText(0, _translate("MainWindow", "门板后右角度"))
         self.treeWidget.topLevelItem(3).setText(0, _translate("MainWindow", "多生产设备的PLC节点的数据分析与可视化显示"))
         self.treeWidget.topLevelItem(3).child(0).setText(0, _translate("MainWindow", "OP20线"))
         self.treeWidget.topLevelItem(3).child(0).child(0).setText(0, _translate("MainWindow", "OP20今日报警频次"))

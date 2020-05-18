@@ -100,7 +100,7 @@ color: rgb(85, 255, 255);</string>
          <x>0</x>
          <y>0</y>
          <width>1280</width>
-         <height>695</height>
+         <height>681</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
@@ -268,13 +268,58 @@ color: rgb(85, 255, 255);
              </property>
              <item>
               <property name="text">
-               <string>新建子项目</string>
+               <string>侧板焊接线</string>
               </property>
+              <item>
+               <property name="text">
+                <string>焊接启动</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>送丝</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>油泵开</string>
+               </property>
+              </item>
              </item>
              <item>
               <property name="text">
-               <string>新建项目</string>
+               <string>新萨瓦尼尼线</string>
               </property>
+              <item>
+               <property name="text">
+                <string>门板前左角度</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>门板中部左角度</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>门板后左角度</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>门板前右角度</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>门板中部右角度</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>门板后右角度</string>
+               </property>
+              </item>
              </item>
             </item>
             <item>
@@ -389,7 +434,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>23</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="styleSheet">

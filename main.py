@@ -1,6 +1,7 @@
 import sys
 import os
 
+import cv2
 import numpy as np
 from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSlot
@@ -8,10 +9,11 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTreeWidget
 
 from multidim_gui.multidim_analysis_v2 import Ui_MainWindow
-from utils.image_process import array_to_QImage
+from utils.image_process import array_to_QImage, fig2img
 from li.draw_graph import Demo
 from chen.draw_graph import draw_records
 from wang.figure_plot import Figure_OEE
+from yv.opc_plot import FigureLineChart
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -29,6 +31,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             lambda item, col: self.set_label_pixmap(self.get_project_chart(item.text(col))))
 
         self.li_project = Demo()
+        self.yv_project = FigureLineChart()
 
         # self.pushButton_1.clicked.connect(lambda: self.set_label_pixmap(
         #     self.graphLabel, self.li_project.drawPie("OP30厚度检测气缸伸出未到位")))
@@ -92,6 +95,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return self.li_project.drawPie("OP40安全门未锁")
         elif item_name == "OP40宽度检测气缸缩回未到位":
             return self.li_project.drawBarAndLine("OP40宽度检测气缸缩回未到位")
+
+        # yv
+        # 侧板焊接线
+        elif item_name == "焊接启动":
+            self.yv_project.plotlinechart("hanjie", "日平均(7日)", "焊接启动", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "送丝":
+            self.yv_project.plotlinechart("hanjie", "日平均(7日)", "送丝", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "油泵开":
+            self.yv_project.plotlinechart("hanjie", "日平均(7日)", "油泵开", "计数")
+            return cv2.imread("1.png")
+        # 新萨瓦尼尼线
+        elif item_name == "门板前左角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板前左角度", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "门板中部左角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板中部左角度", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "门板后左角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板后左角度", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "门板前右角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板前右角度", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "门板中部右角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板中部右角度", "计数")
+            return cv2.imread("1.png")
+        elif item_name == "门板后右角度":
+            self.yv_project.plotlinechart("xinsawanini", "日平均(7日)", "门板后右角度", "计数")
+            return cv2.imread("1.png")
+
+        # wang
+        elif item_name == "":
+            return
+
+        # yue
 
         else:
             print("未设置该项目")
