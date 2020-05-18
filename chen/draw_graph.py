@@ -2,6 +2,7 @@ import datetime
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.pylab import mpl
 from matplotlib.ticker import MaxNLocator
 
 from chen.database import MySql
@@ -9,7 +10,6 @@ from utils.image_process import fig2img, array_to_QImage
 
 
 def draw_bar_graph(names: [str], values: [int], title: str) -> np.ndarray:
-    from pylab import mpl
     mpl.rcParams['font.sans-serif'] = ['FangSong']  # 指定默认字体
     mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
@@ -26,9 +26,9 @@ def draw_bar_graph(names: [str], values: [int], title: str) -> np.ndarray:
 
 
 def draw_records(production_line: str):
-    time_interval = datetime.timedelta(hours=2)
+    time_interval = datetime.timedelta(days=1)
     end_datetime = datetime.datetime.now()
-    start_datetime = end_datetime - datetime.timedelta(hours=24)
+    start_datetime = end_datetime - datetime.timedelta(days=15)
 
     datetime_periods = []
     temp_datetime = start_datetime + time_interval
@@ -45,7 +45,7 @@ def draw_records(production_line: str):
     # print(len(datetime_periods), datetime_periods)
     count_records = MySql.count_records_multi_datetime_periods(production_line, datetime_periods)
     # print(len(count_records), count_records)
-    names = [x[1].split(' ')[1] for x in datetime_periods]
+    names = [x[1].split(' ')[0] for x in datetime_periods]
     # print(names)
-    img = draw_bar_graph(names, count_records, production_line + "线 24小时内异常事件情况")
+    img = draw_bar_graph(names, count_records, production_line + "线 15天内异常事件情况")
     return img
