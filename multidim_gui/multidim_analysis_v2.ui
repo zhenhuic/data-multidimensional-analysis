@@ -100,7 +100,7 @@ color: rgb(85, 255, 255);</string>
          <x>0</x>
          <y>0</y>
          <width>1280</width>
-         <height>681</height>
+         <height>695</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
@@ -198,31 +198,6 @@ color: rgb(85, 255, 255);
               <item>
                <property name="text">
                 <string>侧板设备工作损失时间统计</string>
-               </property>
-              </item>
-             </item>
-             <item>
-              <property name="text">
-               <string>厚板线</string>
-              </property>
-              <item>
-               <property name="text">
-                <string>新建子项目</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>新建项目</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>新建项目</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>新建项目</string>
                </property>
               </item>
              </item>
@@ -429,7 +404,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>30</height>
+     <height>23</height>
     </rect>
    </property>
    <property name="styleSheet">

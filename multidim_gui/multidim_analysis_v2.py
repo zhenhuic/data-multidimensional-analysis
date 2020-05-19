@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\projects-summary\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
+# Form implementation generated from reading ui file 'E:\Lab417\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.14.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1280, 681))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1280, 695))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout.setContentsMargins(0, 9, 0, 9)
@@ -79,11 +79,6 @@ class Ui_MainWindow(object):
         self.treeWidget.setObjectName("treeWidget")
         item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
-        item_2 = QtWidgets.QTreeWidgetItem(item_1)
-        item_2 = QtWidgets.QTreeWidgetItem(item_1)
-        item_2 = QtWidgets.QTreeWidgetItem(item_1)
-        item_1 = QtWidgets.QTreeWidgetItem(item_0)
-        item_2 = QtWidgets.QTreeWidgetItem(item_1)
         item_2 = QtWidgets.QTreeWidgetItem(item_1)
         item_2 = QtWidgets.QTreeWidgetItem(item_1)
         item_2 = QtWidgets.QTreeWidgetItem(item_1)
@@ -140,7 +135,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 30))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 23))
         self.menuBar.setStyleSheet("background-color: rgb(35, 35, 35);\n"
 "selection-background-color: rgb(100, 100, 100);\n"
 "color: rgb(255, 255, 255);")
@@ -202,11 +197,6 @@ class Ui_MainWindow(object):
         self.treeWidget.topLevelItem(0).child(0).child(0).setText(0, _translate("MainWindow", "侧板设备工作损失占比"))
         self.treeWidget.topLevelItem(0).child(0).child(1).setText(0, _translate("MainWindow", "侧板OEE能效日推图"))
         self.treeWidget.topLevelItem(0).child(0).child(2).setText(0, _translate("MainWindow", "侧板设备工作损失时间统计"))
-        self.treeWidget.topLevelItem(0).child(1).setText(0, _translate("MainWindow", "厚板线"))
-        self.treeWidget.topLevelItem(0).child(1).child(0).setText(0, _translate("MainWindow", "新建子项目"))
-        self.treeWidget.topLevelItem(0).child(1).child(1).setText(0, _translate("MainWindow", "新建项目"))
-        self.treeWidget.topLevelItem(0).child(1).child(2).setText(0, _translate("MainWindow", "新建项目"))
-        self.treeWidget.topLevelItem(0).child(1).child(3).setText(0, _translate("MainWindow", "新建项目"))
         self.treeWidget.topLevelItem(1).setText(0, _translate("MainWindow", "多工位的安全监测、生产过程控制与可视化"))
         self.treeWidget.topLevelItem(1).child(0).setText(0, _translate("MainWindow", "专机下线"))
         self.treeWidget.topLevelItem(1).child(1).setText(0, _translate("MainWindow", "新萨瓦尼尼线"))
