@@ -1,3 +1,4 @@
+import smtplib
 import sys
 import os
 
@@ -6,12 +7,15 @@ import numpy as np
 from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTreeWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTreeWidget, QMessageBox, QDialog, QRadioButton
 
+from config import email_address
 from multidim_gui.multidim_analysis_v2 import Ui_MainWindow
+from multidim_gui.send_email_report_dialog import Ui_sendEmailDialog
 from utils.image_process import array_to_QImage, fig2img
 from li.draw_graph import Demo
 from chen.draw_graph import draw_records
+from utils.send_email import Email
 from wang.draw import Draw
 from wang.figure_plot import Figure_OEE
 from yv.opc_plot import FigureLineChart
@@ -26,6 +30,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fullScreen.triggered.connect(self.showFullScreen)
         self.exitFullScreen.triggered.connect(self.showNormal)
         self.setupMenu.triggered.connect(lambda: os.system("notepad config.py"))
+        self.openEmailReport.triggered.connect(self.open_send_email_dialog)
         self.treeWidget.expandAll()
 
         self.treeWidget.itemClicked['QTreeWidgetItem*', 'int'].connect(
@@ -35,26 +40,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.yv_project = FigureLineChart()
         self.wang_project = Draw()
 
-        # self.pushButton_1.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, self.li_project.drawPie("OP30厚度检测气缸伸出未到位")))
-        #
-        # self.pushButton_2.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, self.li_project.drawBarAndLine("OP40定位台宽度检测气缸缩回到位")))
-        #
-        # self.pushButton_3.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, self.li_project.drawMultipleToday("OP30")))
-        #
-        # self.pushButton_4.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, self.li_project.drawMultipleWeek("OP30")))
-        #
-        # self.pushButton_5.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, draw_records("sawanini_1")))
-        #
-        # self.pushButton_6.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, draw_records("baobantongyong")))
-        # oee = Figure_OEE()
-        # self.pushButton_7.clicked.connect(lambda: self.set_label_pixmap(
-        #     self.graphLabel, oee.plot(*(33, 28, 37, 94))))
+        self.send_email_report_dialog = None
 
     def get_project_chart(self, item_name: str) -> np.ndarray:
         print('"' + item_name + '"')
@@ -154,6 +140,82 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot(bool)
     def process_exit(self, trigger):
         sys.exit()
+
+    @pyqtSlot(bool)
+    def open_send_email_dialog(self, triggered):
+        self.send_email_report_dialog = SendEmailDialog(self)
+        self.send_email_report_dialog.show()
+
+
+class SendEmailDialog(QDialog, Ui_sendEmailDialog):
+    def __init__(self, statistic_window):
+        super().__init__()
+        self.setupUi(self)
+        self.setWindowTitle("发送邮件报告")
+        self.statistic_window = statistic_window
+        self.email_subject, self.email_content = self.get_email_subject_content()
+
+        self.textEdit.append(self.email_subject)
+        self.textEdit.append(self.email_content)
+        self.lineEdit.setText(email_address)
+
+        self.buttonBox.accepted.connect(self.button_box_accepted)
+
+        self.radioButton_1.toggled.connect(lambda t: self.toggle_radio_button(
+            self.radioButton_1, self.radioButton_1.isDown()))
+        self.radioButton_2.toggled.connect(lambda t: self.toggle_radio_button(
+            self.radioButton_2, self.radioButton_2.isDown()))
+        self.radioButton_3.toggled.connect(lambda t: self.toggle_radio_button(
+            self.radioButton_3, self.radioButton_3.isDown()))
+        self.radioButton_4.toggled.connect(lambda t: self.toggle_radio_button(
+            self.radioButton_4, self.radioButton_4.isDown()))
+
+        self.email_content = {
+            'wang': '',
+            'chen': '',
+            'yv': '',
+            'li': '',
+        }
+
+    def toggle_radio_button(self, radio_button: QRadioButton, is_down: bool):
+        if radio_button == self.radioButton_1:
+            pass
+
+    @pyqtSlot()
+    def button_box_accepted(self):
+        success = self.send_email_records(self.email_subject, self.textEdit.toPlainText(), self.lineEdit.text())
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle("邮件发送反馈")
+        if success:
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setText("报告邮件发送成功^_^ ")
+        else:
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setText("报告邮件发送失败！!")
+        msg_box.show()
+        msg_box.exec()
+
+    def get_email_subject_content(self) -> (str, str):
+        # start_datetime = self.statistic_window.startDateTime.dateTime().toPyDateTime().strftime("%Y-%m-%d %H:%M:%S")
+        # end_datetime = self.statistic_window.endDateTime.dateTime().toPyDateTime().strftime("%Y-%m-%d %H:%M:%S")
+        # production_line = self.statistic_window.productionLineComboBox.currentText()
+        # subject = "异常行为事件报告 " + production_line + "工位 " + start_datetime + "至" + end_datetime
+        # content = ""
+        # for name, count in zip(self.statistic_window.graph_names, self.statistic_window.record_numbers):
+        #     content += str(name) + "：" + str(count) + "\n"
+        subject, content = '', ''
+        return subject, content
+
+    @staticmethod
+    def send_email_records(subject: str, content: str, to_account: str) -> bool:
+        try:
+            Email.send_email(subject, content, from_account="layhal@163.com", SMTP_host="smtp.163.com",
+                             from_password="liu670", to_account=to_account)
+            print("邮件报告发送成功")
+            return True
+        except smtplib.SMTPException or Exception as e:
+            print("邮件报告发送失败！", e)
+            return False
 
 
 def except_hook(cls, exception, traceback):
