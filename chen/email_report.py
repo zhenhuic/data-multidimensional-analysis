@@ -33,5 +33,5 @@ def get_records_report() -> str:
         names, counts = select_records(project_name)
         text += "工位：" + project_name + "\n"
         for n, c in zip(names, counts):
-            text += n + "：" + c + "\n"
+            text += n + "：" + str(c) + "\n"
     return text

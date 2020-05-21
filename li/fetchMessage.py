@@ -16,7 +16,7 @@ class Message:
         msg = ""
         # name = self.comboBox_1.currentText()
         menu = Menu()
-        nameList = menu.readerTitle("../menuFile/" + str(name) + ".txt")
+        nameList = menu.readerTitle("menuFile/" + str(name) + ".txt")
         util = Utils()
         header = name + "\n今日故障报告如下：\n"
         msg += header

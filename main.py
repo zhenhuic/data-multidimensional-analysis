@@ -18,6 +18,7 @@ from li.fetchMessage import Message
 from chen.draw_graph import draw_records
 from chen.email_report import get_records_report
 from utils.send_email import Email
+from wang.get_analysis_report import get_analysis_report
 from wang.draw import Draw
 from wang.figure_plot import Figure_OEE
 from yv.opc_plot import FigureLineChart
@@ -125,8 +126,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif item_name == "侧板设备工作损失时间统计":
             return self.wang_project.draw_loss()
 
-        # yue
-
         else:
             print("未设置该项目")
             return None
@@ -147,6 +146,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def open_send_email_dialog(self, triggered):
         self.send_email_report_dialog = SendEmailDialog(self)
         self.send_email_report_dialog.show()
+        # self.send_email_report_dialog.exec()
 
 
 class SendEmailDialog(QDialog, Ui_sendEmailDialog):
@@ -155,22 +155,17 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
         self.setupUi(self)
         self.setWindowTitle("发送邮件报告")
         self.statistic_window = statistic_window
-        self.email_subject, self.email_content = self.get_email_subject_content()
 
-        self.textEdit.append(self.email_subject)
-        self.textEdit.append(self.email_content)
         self.lineEdit.setText(email_address)
-
         self.buttonBox.accepted.connect(self.button_box_accepted)
-
-        self.radioButton_1.toggled.connect(lambda t: self.toggle_radio_button(
-            "wang", self.radioButton_1.isDown()))
-        self.radioButton_2.toggled.connect(lambda t: self.toggle_radio_button(
-            "chen", self.radioButton_2.isDown()))
-        self.radioButton_3.toggled.connect(lambda t: self.toggle_radio_button(
-            "yv", self.radioButton_3.isDown()))
-        self.radioButton_4.toggled.connect(lambda t: self.toggle_radio_button(
-            "li", self.radioButton_4.isDown()))
+        self.radioButton_1.toggled.connect(lambda checked: self.toggle_radio_button(
+            "wang", checked))
+        self.radioButton_2.toggled.connect(lambda checked: self.toggle_radio_button(
+            "chen", checked))
+        self.radioButton_3.toggled.connect(lambda checked: self.toggle_radio_button(
+            "yv", checked))
+        self.radioButton_4.toggled.connect(lambda checked: self.toggle_radio_button(
+            "li", checked))
 
         self.email_content = {
             'wang': '',
@@ -180,13 +175,14 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
         }
 
     def toggle_radio_button(self, project_name: str, is_down: bool):
+        print(project_name, is_down)
         if not is_down:
             self.email_content[project_name] = ""
             self.textEdit.clear()
             for cont in self.email_content.values():
                 self.textEdit.append(cont)
         else:
-            self.email_content[project_name] = self.get_email_subject_content(project_name)
+            self.email_content[project_name] = self.get_email_content(project_name)
             self.textEdit.append(self.email_content[project_name])
 
     @pyqtSlot()
@@ -211,11 +207,9 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
                    Message.transmitReporter("OP30") + \
                    Message.transmitReporter("OP40")
         elif project_name == "wang":
+            return get_analysis_report()
+        elif project_name == "yv":  # TODO
             return ""
-
-        elif project_name == "yv":
-            return ""
-
         return ""
 
     @staticmethod
