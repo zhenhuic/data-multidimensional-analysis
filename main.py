@@ -14,7 +14,9 @@ from multidim_gui.multidim_analysis_v2 import Ui_MainWindow
 from multidim_gui.send_email_report_dialog import Ui_sendEmailDialog
 from utils.image_process import array_to_QImage, fig2img
 from li.draw_graph import Demo
+from li.fetchMessage import Message
 from chen.draw_graph import draw_records
+from chen.email_report import get_records_report
 from utils.send_email import Email
 from wang.draw import Draw
 from wang.figure_plot import Figure_OEE
@@ -162,13 +164,13 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
         self.buttonBox.accepted.connect(self.button_box_accepted)
 
         self.radioButton_1.toggled.connect(lambda t: self.toggle_radio_button(
-            self.radioButton_1, self.radioButton_1.isDown()))
+            "wang", self.radioButton_1.isDown()))
         self.radioButton_2.toggled.connect(lambda t: self.toggle_radio_button(
-            self.radioButton_2, self.radioButton_2.isDown()))
+            "chen", self.radioButton_2.isDown()))
         self.radioButton_3.toggled.connect(lambda t: self.toggle_radio_button(
-            self.radioButton_3, self.radioButton_3.isDown()))
+            "yv", self.radioButton_3.isDown()))
         self.radioButton_4.toggled.connect(lambda t: self.toggle_radio_button(
-            self.radioButton_4, self.radioButton_4.isDown()))
+            "li", self.radioButton_4.isDown()))
 
         self.email_content = {
             'wang': '',
@@ -177,13 +179,19 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
             'li': '',
         }
 
-    def toggle_radio_button(self, radio_button: QRadioButton, is_down: bool):
-        if radio_button == self.radioButton_1:
-            pass
+    def toggle_radio_button(self, project_name: str, is_down: bool):
+        if not is_down:
+            self.email_content[project_name] = ""
+            self.textEdit.clear()
+            for cont in self.email_content.values():
+                self.textEdit.append(cont)
+        else:
+            self.email_content[project_name] = self.get_email_subject_content(project_name)
+            self.textEdit.append(self.email_content[project_name])
 
     @pyqtSlot()
     def button_box_accepted(self):
-        success = self.send_email_records(self.email_subject, self.textEdit.toPlainText(), self.lineEdit.text())
+        success = self.send_email_records("生产流程的多维分析与可视化-统计报告", self.textEdit.toPlainText(), self.lineEdit.text())
         msg_box = QMessageBox()
         msg_box.setWindowTitle("邮件发送反馈")
         if success:
@@ -195,16 +203,20 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
         msg_box.show()
         msg_box.exec()
 
-    def get_email_subject_content(self) -> (str, str):
-        # start_datetime = self.statistic_window.startDateTime.dateTime().toPyDateTime().strftime("%Y-%m-%d %H:%M:%S")
-        # end_datetime = self.statistic_window.endDateTime.dateTime().toPyDateTime().strftime("%Y-%m-%d %H:%M:%S")
-        # production_line = self.statistic_window.productionLineComboBox.currentText()
-        # subject = "异常行为事件报告 " + production_line + "工位 " + start_datetime + "至" + end_datetime
-        # content = ""
-        # for name, count in zip(self.statistic_window.graph_names, self.statistic_window.record_numbers):
-        #     content += str(name) + "：" + str(count) + "\n"
-        subject, content = '', ''
-        return subject, content
+    def get_email_content(self, project_name: str) -> str:
+        if project_name == 'chen':
+            return get_records_report()
+        elif project_name == 'li':
+            return Message.transmitReporter("OP20") + \
+                   Message.transmitReporter("OP30") + \
+                   Message.transmitReporter("OP40")
+        elif project_name == "wang":
+            return ""
+
+        elif project_name == "yv":
+            return ""
+
+        return ""
 
     @staticmethod
     def send_email_records(subject: str, content: str, to_account: str) -> bool:
