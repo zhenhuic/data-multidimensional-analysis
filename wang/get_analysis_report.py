@@ -8,7 +8,7 @@ def get_analysis_report():
     list_loss = da.select_loss()
     list_oee = da.select_oee()
     dict_oee = {}
-    hour = min(time.localtime()[3], 19)
+    hour = min(time.localtime()[3], 18)
     for i in range(8, hour + 1):
         dict_oee[str(i) + "点"] = list_oee[i - 8]
     analysis_report = "今日侧板焊接分析报告\n" \

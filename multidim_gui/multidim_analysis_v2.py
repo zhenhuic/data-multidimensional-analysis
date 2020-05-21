@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\Lab417\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
+# Form implementation generated from reading ui file 'E:\projects-summary\data-multidimensional-analysis\multidim_gui\multidim_analysis_v2.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -193,12 +193,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "基于人工智能的生产流程分析与可视化系统"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "生产流程的多维分析与可视化"))
         self.titleLabel.setText(_translate("MainWindow", "生产流程的多维分析与可视化"))
         self.treeWidget.headerItem().setText(0, _translate("MainWindow", "1"))
         __sortingEnabled = self.treeWidget.isSortingEnabled()
         self.treeWidget.setSortingEnabled(False)
-        self.treeWidget.topLevelItem(0).setText(0, _translate("MainWindow", "多工位的设备综合效率多维度分析与可视化"))
+        self.treeWidget.topLevelItem(0).setText(0, _translate("MainWindow", "工位设备综合效率多维度分析与可视化"))
         self.treeWidget.topLevelItem(0).child(0).setText(0, _translate("MainWindow", "侧板焊接线"))
         self.treeWidget.topLevelItem(0).child(0).child(0).setText(0, _translate("MainWindow", "侧板设备工作损失占比"))
         self.treeWidget.topLevelItem(0).child(0).child(1).setText(0, _translate("MainWindow", "侧板OEE能效日推图"))

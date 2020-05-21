@@ -21,6 +21,7 @@ from utils.send_email import Email
 from wang.get_analysis_report import get_analysis_report
 from wang.draw import Draw
 from wang.figure_plot import Figure_OEE
+from yv.analysis_report import report_summarize
 from yv.opc_plot import FigureLineChart
 
 
@@ -208,8 +209,8 @@ class SendEmailDialog(QDialog, Ui_sendEmailDialog):
                    Message.transmitReporter("OP40")
         elif project_name == "wang":
             return get_analysis_report()
-        elif project_name == "yv":  # TODO
-            return ""
+        elif project_name == "yv":
+            return report_summarize()
         return ""
 
     @staticmethod

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>基于人工智能的生产流程分析与可视化系统</string>
+   <string>生产流程的多维分析与可视化</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 0, 0);</string>
@@ -179,7 +179,7 @@ color: rgb(85, 255, 255);
             </column>
             <item>
              <property name="text">
-              <string>多工位的设备综合效率多维度分析与可视化</string>
+              <string>工位设备综合效率多维度分析与可视化</string>
              </property>
              <item>
               <property name="text">
