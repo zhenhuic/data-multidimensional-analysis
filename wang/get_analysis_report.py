@@ -22,8 +22,8 @@ def get_analysis_report():
                       "\n" \
                       "清理焊嘴：{} \n" \
                       "装载侧板：{} \n" \
-                      "机器工作：{} \n" \
-                      "机器静止：{} \n".format(dict_oee, list_loss[0], list_loss[1], list_loss[2], list_loss[3])
+                      "机器静止：{} \n" \
+                      "机器工作：{} \n".format(dict_oee, list_loss[0], list_loss[1], list_loss[2], list_loss[3])
     return analysis_report
 
 
