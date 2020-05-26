@@ -4,6 +4,7 @@ import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.ticker import MaxNLocator
 
 from li.utils import *
 from utils.image_process import fig2img, array_to_QImage
@@ -17,6 +18,7 @@ class MyFigure:
     def __init__(self):
         self.fig = plt.figure(figsize=(8, 8))
         self.ax1 = self.fig.add_subplot(111)
+        self.ax1.yaxis.set_major_locator(MaxNLocator(integer=True))
 
 
 class Demo:
