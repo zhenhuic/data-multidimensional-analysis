@@ -13,7 +13,6 @@ from config import email_address
 class Email:
     def __init__(self):
         self.prev_send_timestamp = None
-        self.email_warning_interval = email_opc_warning_interval
 
     @staticmethod
     def send_email(subject, content, imgpath=None, imgname=None, SMTP_host="smtp.qq.com",
@@ -32,7 +31,7 @@ class Email:
         :return:
         """
         # 1. 实例化SMTP,创建对象
-        smtp = smtplib.SMTP()
+        smtp = smtplib.SMTP(timeout=7)
         # 2. 链接邮件服务器，若为QQ：smtp.qq.com,若为163：smtp.163.com
         smtp.connect(SMTP_host)
         # 3. 配置发送邮箱的用户名和密码(授权码)
@@ -62,21 +61,3 @@ class Email:
         smtp.sendmail(from_account, to_account, msg.as_string())
         # 7. 关闭邮件服务
         smtp.quit()
-
-    def email_warning(self, subject, content=""):
-        curr_time = time.time()
-        if self.prev_send_timestamp is None or curr_time - self.prev_send_timestamp > self.email_warning_interval:
-            try:
-                self.send_email(subject, content)
-                print("报警邮件发送成功")
-
-                self.prev_send_timestamp = curr_time
-            except smtplib.SMTPException as e:
-                print("报警邮箱发送失败！", e)
-                # raise e
-            except Exception as ex:
-                print("报警邮箱发送失败！", ex)
-
-    def subthread_email_warning(self, subject, content):
-        th = Thread(target=self.email_warning, args=(subject, content))
-        th.start()
